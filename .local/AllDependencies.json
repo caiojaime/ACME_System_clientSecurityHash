@@ -5285,11 +5285,11 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "UiPath_REFrameWork",
-      "projectName": "UiPath_REFrameWork",
-      "projectPath": "C:\\Users\\Biti9\\Documents\\UiPath\\ReFrameWork\\.local",
+      "projectUniqueName": "ACME_System_ReFrameWork",
+      "projectName": "ACME_System_ReFrameWork",
+      "projectPath": "C:\\Users\\Biti9\\Documents\\UiPath\\ACME_System_ReFrameWork\\.local",
       "packagesPath": "C:\\Users\\Biti9\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Biti9\\Documents\\UiPath\\ReFrameWork\\.local"
+      "outputPath": "C:\\Users\\Biti9\\Documents\\UiPath\\ACME_System_ReFrameWork\\.local"
     },
     "frameworks": {
       "net461": {

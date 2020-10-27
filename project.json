@@ -1,5 +1,5 @@
 {
-  "name": "UiPath_REFrameWork",
+  "name": "ACME_System_ReFrameWork",
   "description": "UiPath REFramework Template",
   "main": "Main.xaml",
   "dependencies": {
