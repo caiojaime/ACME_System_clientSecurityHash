@@ -1,14 +1,15 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="System1_Login" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="System1_Login" this:System1_Login.System1_URL="http://www.acme-test.com" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_System1_Credential" Type="InArgument(x:String)" />
+    <x:Property Name="System1_URL" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>766.857142857143,1786.85714285714</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>766.857142857143,1826.85714285714</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>System1_Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="31">
+    <scg:List x:TypeArguments="x:String" Capacity="32">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -40,10 +41,11 @@
       <x:String>Microsoft.Exchange.WebServices.Data</x:String>
       <x:String>UiPath.Mail</x:String>
       <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Core.Activities.Orchestrator</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -73,10 +75,11 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Word</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>Microsoft.Exchange.WebServices</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Realiza o login na pagina  ACME System1" DisplayName="System1_Login" sap:VirtualizedContainerService.HintSize="665.142857142857,1621.71428571429" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -84,11 +87,6 @@
       <Variable x:TypeArguments="x:String" Name="username" />
       <Variable x:TypeArguments="ss:SecureString" Name="password" />
       <Variable x:TypeArguments="x:Boolean" Name="logInSucessFul" />
-      <Variable x:TypeArguments="x:String" Name="in_System1_URL">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">http://www.acme-test.com/</Literal>
-        </Variable.Default>
-      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -109,7 +107,7 @@
         </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:OpenBrowser Hidden="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" CommunicationMethod="Native" ContinueOnError="False" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="622.857142857143,1345.71428571429" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="False" Url="[in_System1_URL]">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" ContinueOnError="False" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="622.857142857143,1345.71428571429" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[System1_URL]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -168,7 +166,7 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:UiElementExists sap2010:Annotation.AnnotationText="Verifica se o login foi realizado corretamente&#xD;&#xA;&#xD;&#xA;" DisplayName="Element Exists 'A  https://acme-test.ui...'" Exists="[logInSucessFul]" sap:VirtualizedContainerService.HintSize="546.285714285714,168.571428571429" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:UiElementExists sap2010:Annotation.AnnotationText="Verifica se o login foi realizado corretamente&#xA;&#xA;" DisplayName="Element Exists 'A  https://acme-test.ui...'" Exists="[logInSucessFul]" sap:VirtualizedContainerService.HintSize="546.285714285714,168.571428571429" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="86077131-98fd-4fe7-8fed-929b37a44731" InformativeScreenshot="9c67f03c8423e4164490bf7c1adc9dd6" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Dashboard' /&gt;&lt;webctrl aaname='Log Out' parentid='bs-example-navbar-collapse-1' tag='A' /&gt;">
                   <ui:Target.TimeoutMS>
