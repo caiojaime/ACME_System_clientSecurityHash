@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>766.857142857143,678.285714285714</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>777.142857142857,661.714285714286</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>System1_LogOut_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -78,7 +78,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser System1" sap:VirtualizedContainerService.HintSize="434.285714285714,350.857142857143" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="f03337a56155320f23e571c3bea9004b" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Dashboard' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser System1" sap:VirtualizedContainerService.HintSize="434.285714285714,350.857142857143" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="d3ce47891b89280c10f21beb6c2a98a7" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Work Items' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -103,7 +103,7 @@
                 </ui:CursorPosition>
               </ui:Click.CursorPosition>
               <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7efb9773-5e05-42fe-984e-9303c11f8788" InformativeScreenshot="9fce4be008b1d319b9380c702e3f7095" Selector="&lt;webctrl aaname='Log Out' parentid='bs-example-navbar-collapse-1' tag='A' /&gt;" WaitForReady="INTERACTIVE">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7efb9773-5e05-42fe-984e-9303c11f8788" InformativeScreenshot="77bb9d4325ac81c48b04282e1c9948da" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Work Items' /&gt;&lt;webctrl css-selector='body&amp;gt;nav&amp;gt;div' tag='DIV' class='container' /&gt;&lt;webctrl css-selector='body&amp;gt;nav&amp;gt;div&amp;gt;div&amp;gt;ul' parentid='bs-example-navbar-collapse-1' tag='UL' /&gt;&lt;webctrl css-selector='body&amp;gt;nav&amp;gt;div&amp;gt;div&amp;gt;ul&amp;gt;li' parentid='bs-example-navbar-collapse-1' tag='LI' idx='2' /&gt;&lt;webctrl aaname='Log Out' parentid='bs-example-navbar-collapse-1' tag='A' /&gt;" WaitForReady="INTERACTIVE">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
