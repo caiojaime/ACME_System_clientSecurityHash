@@ -78,7 +78,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser System1" sap:VirtualizedContainerService.HintSize="434.285714285714,350.857142857143" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="180361a78cd21e667708961d8d76a841" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Work Items' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser System1" sap:VirtualizedContainerService.HintSize="434.285714285714,350.857142857143" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="d3148824b93c5bbf805bfbd074e140d9" Selector="&lt;html app='chrome.exe' title='*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
