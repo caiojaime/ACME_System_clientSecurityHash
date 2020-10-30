@@ -69,7 +69,6 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Word</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by different workflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction will be skipped. &#xA;If another kind of exception (ApplicationException) occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="402.857142857143,1242.28571428571" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -87,12 +86,8 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke System1_Navegate_WIDetails workflow" sap:VirtualizedContainerService.HintSize="360.571428571429,113.714285714286" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="System1\System1_Navegate_WIDetails.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="System1_URL">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;System1_URL&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="Workitem_ID">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_WIID" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="System1_URL">[in_Config("System1_URL").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="Workitem_ID">[in_WIID]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke System1_ExtractClientInformation workflow" sap:VirtualizedContainerService.HintSize="360.571428571429,113.714285714286" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="System1\System1_ExtractClientInformation.xaml">
@@ -102,9 +97,9 @@
         <InArgument x:TypeArguments="x:String" x:Key="ClientCountry">[ClientCountry]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:Activate DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Activate 'HTML  http://www.sha1-o...'" sap:VirtualizedContainerService.HintSize="360.571428571429,105.142857142857" sap2010:WorkflowViewState.IdRef="Activate_1">
+    <ui:Activate DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Activate 'HTML  http://www.sha1-o...'" sap:VirtualizedContainerService.HintSize="360.571428571429,105.142857142857" sap2010:WorkflowViewState.IdRef="Activate_3">
       <ui:Activate.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c40b9f0c-0732-4f24-b7ec-65c6a4bf1ce9" InformativeScreenshot="bc23db64ee891595da3ebaaa74235d44" Selector="&lt;html app='chrome.exe' title='SHA1 online' /&gt;&lt;webctrl tag='HTML' /&gt;" WaitForReady="COMPLETE">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0cb76ba3-e3cc-4b68-aaa2-12a08abc302a" InformativeScreenshot="7208afd8ef8bf32b9ebf43347ea1e35e" Selector="&lt;html app='chrome.exe' title='SHA1 online' /&gt;&lt;webctrl tag='HTML' /&gt;" WaitForReady="INTERACTIVE">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -119,7 +114,7 @@
     </ui:InvokeWorkflowFile>
     <ui:Activate DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Activate 'BODY'" sap:VirtualizedContainerService.HintSize="360.571428571429,105.142857142857" sap2010:WorkflowViewState.IdRef="Activate_2">
       <ui:Activate.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4dab5110-417e-488e-9a3a-68407c8bb293" InformativeScreenshot="b2562a30c46780aa9fde4cdbe9d3fd35" Selector="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl tag='BODY' /&gt;" WaitForReady="COMPLETE">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4dab5110-417e-488e-9a3a-68407c8bb293" InformativeScreenshot="84650818a9014ebe03def83b6bdb1cee" Selector="&lt;html app='chrome.exe' title='ACME System 1 - *' /&gt;&lt;webctrl tag='BODY' /&gt;" WaitForReady="[WaitForReady.COMPLETE]">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>

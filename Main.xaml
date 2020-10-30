@@ -146,16 +146,28 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334.285714285714,113.714285714286" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="Framework\GetTransactionData.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_TransactionNumber" />
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config" />
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_TransactionNumber">
+                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="TransactionNumber" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                        </InArgument>
                         <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_TransactionItem">
                           <mva:VisualBasicReference x:TypeArguments="sd:DataRow" ExpressionText="TransactionItem" />
                         </OutArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField1" />
-                        <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField2" />
-                        <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionID" />
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TransactionData" />
-                        <InArgument x:TypeArguments="sd:DataRow[]" x:Key="dt_WorkItens">
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField1">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionField1" />
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField2">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionField2" />
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionID">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionID" />
+                        </OutArgument>
+                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TransactionData">
+                          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="TransactionData" />
+                        </InOutArgument>
+                        <InArgument x:TypeArguments="sd:DataRow[]" x:Key="dt_WorkItems">
                           <mva:VisualBasicValue x:TypeArguments="sd:DataRow[]" ExpressionText="WiList" />
                         </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
@@ -406,9 +418,15 @@
                                     </sap:WorkflowViewStateService.ViewState>
                                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke InitAllSettings workflow" sap:VirtualizedContainerService.HintSize="484.571428571429,113.714285714286" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">Data\Config.xlsx</InArgument>
-                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings", "Constants"}]</InArgument>
-                                        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[Config]</OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">
+                                          <Literal x:TypeArguments="x:String">Data\Config.xlsx</Literal>
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">
+                                          <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{&quot;Settings&quot;, &quot;Constants&quot;}" />
+                                        </InArgument>
+                                        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">
+                                          <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                                        </OutArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <If sap2010:Annotation.AnnotationText="Overwrite queue name from in configuration file in case the argument OrchestratorQueueName is specified.&#xA;This provides backward compatibility with &lt; 2018.3 and allows default values to come from Config.xlsx" Condition="[Not string.IsNullOrEmpty(in_OrchestratorQueueName)]" DisplayName="If OrchestratorQueueName is specified" sap:VirtualizedContainerService.HintSize="484.571428571429,295.428571428571" sap2010:WorkflowViewState.IdRef="If_10">
@@ -462,7 +480,7 @@
                                       </ui:InvokeWorkflowFile>
                                       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334.285714285714,113.714285714286" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="System1\System1_ExtractDataTable.xaml">
                                         <ui:InvokeWorkflowFile.Arguments>
-                                          <OutArgument x:TypeArguments="sd:DataTable" x:Key="dt_WorkItens">[TransactionData]</OutArgument>
+                                          <OutArgument x:TypeArguments="sd:DataTable" x:Key="dt_WorkItems">[TransactionData]</OutArgument>
                                         </ui:InvokeWorkflowFile.Arguments>
                                       </ui:InvokeWorkflowFile>
                                       <Assign sap:VirtualizedContainerService.HintSize="334.285714285714,61.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_30">

@@ -103,9 +103,6 @@
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
           <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376.571428571429,258.285714285714" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="Hash" />
-            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -123,7 +120,7 @@
                 </ui:Target>
               </ui:GetFullText.Target>
               <ui:GetFullText.Text>
-                <OutArgument x:TypeArguments="x:String">[Hash]</OutArgument>
+                <OutArgument x:TypeArguments="x:String">[out_Hash]</OutArgument>
               </ui:GetFullText.Text>
             </ui:GetFullText>
             <ui:GoBack Browser="{x:Null}" DisplayName="Go Back" sap:VirtualizedContainerService.HintSize="334.285714285714,21.7142857142857" sap2010:WorkflowViewState.IdRef="GoBack_1" />
