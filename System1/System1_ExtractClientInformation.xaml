@@ -1,8 +1,8 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="System1_ExtractClientInformation" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="ClientID" Type="InArgument(x:String)" />
-    <x:Property Name="ClientName" Type="InArgument(x:String)" />
-    <x:Property Name="ClientCountry" Type="InArgument(x:String)" />
+    <x:Property Name="out_ClientID" Type="OutArgument(x:String)" />
+    <x:Property Name="out_ClientName" Type="OutArgument(x:String)" />
+    <x:Property Name="out_ClientCountry" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -37,7 +37,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="16">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="29">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -54,6 +54,19 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Presentations</AssemblyReference>
+      <AssemblyReference>UiPath.MobileAutomation</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="System1_ExtractClientInformation" sap:VirtualizedContainerService.HintSize="476.571428571429,839.428571428571" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -72,6 +85,9 @@
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
           <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376.571428571429,602.857142857143" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="testeHash" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -94,29 +110,29 @@
             </ui:GetValue>
             <Assign DisplayName="Client ID" sap:VirtualizedContainerService.HintSize="334.285714285714,61.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[ClientID]</OutArgument>
+                <OutArgument x:TypeArguments="x:String">[out_ClientID]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[ClientInformation.Substring(ClientInformation.indexOf("Client ID:") + "Client ID:".Length).Split(Environment.NewLine.ToCharArray)(0)]</InArgument>
+                <InArgument x:TypeArguments="x:String">[ClientInformation.Substring(ClientInformation.indexOf("Client ID:")+"Client ID:".Length).Split(Environment.NewLine.ToCharArray)(0).TrimStart]</InArgument>
               </Assign.Value>
             </Assign>
             <Assign DisplayName="Client Name" sap:VirtualizedContainerService.HintSize="334.285714285714,61.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[ClientName]</OutArgument>
+                <OutArgument x:TypeArguments="x:String">[out_ClientName]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[ClientInformation.Substring(ClientInformation.indexOf("Client Name:") + "Client Name:".Length).Split(Environment.NewLine.ToCharArray)(0)]</InArgument>
+                <InArgument x:TypeArguments="x:String">[ClientInformation.Substring(ClientInformation.indexOf("Client Name:")+"Client Name:".Length).Split(Environment.NewLine.ToCharArray)(0).TrimStart]</InArgument>
               </Assign.Value>
             </Assign>
             <Assign DisplayName="Client Country" sap:VirtualizedContainerService.HintSize="334.285714285714,61.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[ClientCountry]</OutArgument>
+                <OutArgument x:TypeArguments="x:String">[out_ClientCountry]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[ClientInformation.Substring(ClientInformation.indexOf("Client Country:") + "Client Country:".Length).Split(Environment.NewLine.ToCharArray)(0)]</InArgument>
+                <InArgument x:TypeArguments="x:String">[ClientInformation.Substring(ClientInformation.indexOf("Client Country:")+"Client Country:".Length).Split(Environment.NewLine.ToCharArray)(0).TrimStart]</InArgument>
               </Assign.Value>
             </Assign>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334.285714285714,62.8571428571429" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[ClientID + &quot; - &quot; + ClientName+&quot; - &quot;+ClientCountry]" />
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334.285714285714,62.8571428571429" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[out_ClientID + &quot;-&quot; + out_ClientName + &quot;-&quot; + out_ClientCountry]" />
           </Sequence>
         </ActivityAction>
       </ui:BrowserScope.Body>
